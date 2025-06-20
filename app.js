@@ -36,7 +36,13 @@ const clearDisplay = () => {
 };
 
 const evaluateEquation = () => {
-  displayText = eval(displayText);
-  display.textContent = displayText;
-  displayText = "";
+  try {
+    const result = math.evaluate(displayText);
+    display.textContent = result;
+    displayText = "";
+  } catch (error) {
+    display.textContent = "Error";
+    console.error(error);
+    displayText = "";
+  }
 };
