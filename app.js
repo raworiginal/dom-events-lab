@@ -37,6 +37,8 @@ const clearDisplay = () => {
 
 const evaluateEquation = () => {
   try {
+    //This utilizes the math.evaluate() method from MathJs library.
+    //https://mathjs.org/docs/expressions/parsing.html
     const result = math.evaluate(displayText.join(""));
     display.textContent = result;
     displayText = "";
