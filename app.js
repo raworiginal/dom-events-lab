@@ -1,7 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
 
 /*-------------------------------- Variables --------------------------------*/
-let displayText = "";
+let displayText = [];
 /*------------------------ Cached Element References ------------------------*/
 const buttons = document.querySelectorAll(".button");
 const calculator = document.querySelector("#calculator");
@@ -10,16 +10,16 @@ const display = document.querySelector(".display");
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
     if (event.target.classList.contains("number")) {
-      displayText += event.target.textContent;
-      display.textContent = displayText;
+      displayText.push(event.target.textContent);
+      display.textContent = displayText.join(" ");
     }
     if (event.target.classList.contains("operator")) {
       let operator = event.target.textContent;
       if (operator === "C") {
         clearDisplay();
       } else {
-        displayText += " " + operator + " ";
-        display.textContent = displayText;
+        displayText.push(event.target.textContent);
+        display.textContent = displayText.join(" ");
       }
     }
     if (event.target.classList.contains("equals")) {
@@ -31,13 +31,13 @@ buttons.forEach((button) => {
 
 /*-------------------------------- Functions --------------------------------*/
 const clearDisplay = () => {
-  displayText = "";
-  display.textContent = displayText;
+  displayText = [];
+  display.textContent = displayText.join(" ");
 };
 
 const evaluateEquation = () => {
   try {
-    const result = math.evaluate(displayText);
+    const result = math.evaluate(displayText.join(""));
     display.textContent = result;
     displayText = "";
   } catch (error) {
