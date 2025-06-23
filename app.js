@@ -6,6 +6,7 @@ let displayText = [];
 const buttons = document.querySelectorAll(".button");
 const calculator = document.querySelector("#calculator");
 const display = document.querySelector(".display");
+
 /*----------------------------- Event Listeners -----------------------------*/
 buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -23,7 +24,6 @@ buttons.forEach((button) => {
       }
     }
     if (event.target.classList.contains("equals")) {
-      console.log("Click");
       evaluateEquation();
     }
   });
