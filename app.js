@@ -13,14 +13,17 @@ buttons.forEach((button) => {
     if (event.target.classList.contains("number")) {
       displayText.push(event.target.textContent);
       display.textContent = displayText.join(" ");
+      console.log(displayText);
     }
     if (event.target.classList.contains("operator")) {
       let operator = event.target.textContent;
       if (operator === "C") {
         clearDisplay();
+        console.log(displayText);
       } else {
         displayText.push(event.target.textContent);
         display.textContent = displayText.join(" ");
+        console.log(displayText);
       }
     }
     if (event.target.classList.contains("equals")) {
@@ -40,11 +43,13 @@ const evaluateEquation = () => {
     //This utilizes the math.evaluate() method from MathJs library.
     //https://mathjs.org/docs/expressions/parsing.html
     const result = math.evaluate(displayText.join(""));
-    display.textContent = result;
-    displayText = "";
+    displayText = [];
+    displayText.push(result);
+    console.log(displayText);
+    display.textContent = displayText;
   } catch (error) {
     display.textContent = "Error";
     console.error(error);
-    displayText = "";
+    displayText = [];
   }
 };
